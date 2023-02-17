@@ -1,6 +1,7 @@
 import { Logout, Search } from '@mui/icons-material'
 import { Avatar, IconButton, InputAdornment, TextField, Typography } from '@mui/material'
 import { Stack } from '@mui/system'
+import Link from 'next/link'
 import React, { useState } from 'react'
 import styled from 'styled-components'
 import AddNewChat from './AddNewChat'
@@ -44,9 +45,11 @@ const Sidebar = () => {
 				alignItems="center"
 				spacing={1}>
 				<AddNewChat />
-				<IconButton>
-					<Logout />
-				</IconButton>
+				<Link href="/login">
+					<IconButton>
+						<Logout />
+					</IconButton>
+				</Link>
 			</Stack>
 		</Stack>
 	)

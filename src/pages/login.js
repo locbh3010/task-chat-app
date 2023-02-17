@@ -6,6 +6,7 @@ import * as yup from 'yup'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { useForm } from 'react-hook-form'
 import Head from 'next/head'
+import Link from 'next/link'
 
 const StyledForm = styled.form`
 	display: flex;
@@ -108,6 +109,11 @@ const login = () => {
 
 					{social}
 					{form}
+					<Typography
+						variant="caption"
+						sx={{ marginTop: 3 }}>
+						You don't have account? <Link href="/register">Create an account</Link>
+					</Typography>
 				</Stack>
 			</Box>
 		</>
