@@ -1,5 +1,5 @@
 import { Logout, Search } from '@mui/icons-material'
-import { Avatar, IconButton, InputAdornment, TextField, Tooltip, Typography } from '@mui/material'
+import { Avatar, IconButton, InputAdornment, TextField, Typography } from '@mui/material'
 import { Stack } from '@mui/system'
 import React, { useState } from 'react'
 import styled from 'styled-components'

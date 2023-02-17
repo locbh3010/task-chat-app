@@ -13,6 +13,58 @@ const StyledForm = styled.form`
 `
 
 const login = () => {
+	const social = (
+		<Stack
+			alignItems="center"
+			justifyContent="space-between"
+			spacing={2}
+			direction="row"
+			sx={{ width: '100%', mt: 4 }}>
+			<Button
+				variant="outlined"
+				startIcon={<Google />}
+				fullWidth>
+				Goggle
+			</Button>
+			<Button
+				variant="outlined"
+				startIcon={<Facebook />}
+				fullWidth>
+				Facebook
+			</Button>
+			<Button
+				variant="outlined"
+				startIcon={<GitHub />}
+				fullWidth>
+				GitHub
+			</Button>
+		</Stack>
+	)
+
+	const form = (
+		<StyledForm>
+			<TextField
+				label="Email"
+				fullWidth
+				autoComplete={false}
+				type="email"
+			/>
+			<TextField
+				label="Password"
+				fullWidth
+				type="password"
+				autoComplete={false}
+			/>
+			<Button
+				type="submit"
+				variant="contained"
+				size="large"
+				sx={{ fontWeight: 'bold' }}
+				fullWidth>
+				Log In
+			</Button>
+		</StyledForm>
+	)
 	return (
 		<Box sx={{ maxWidth: 'sm', marginInline: 'auto' }}>
 			<Stack
@@ -26,54 +78,8 @@ const login = () => {
 					Log in your account
 				</Typography>
 
-				<Stack
-					alignItems="center"
-					justifyContent="space-between"
-					spacing={2}
-					direction="row"
-					sx={{ width: '100%', mt: 4 }}>
-					<Button
-						variant="outlined"
-						startIcon={<Google />}
-						fullWidth>
-						Goggle
-					</Button>
-					<Button
-						variant="outlined"
-						startIcon={<Facebook />}
-						fullWidth>
-						Facebook
-					</Button>
-					<Button
-						variant="outlined"
-						startIcon={<GitHub />}
-						fullWidth>
-						GitHub
-					</Button>
-				</Stack>
-
-				<StyledForm>
-					<TextField
-						label="Email"
-						fullWidth
-						autoComplete={false}
-						type="email"
-					/>
-					<TextField
-						label="Password"
-						fullWidth
-						type="password"
-						autoComplete={false}
-					/>
-					<Button
-						type="submit"
-						variant="contained"
-						size="large"
-						sx={{ fontWeight: 'bold' }}
-						fullWidth>
-						Log In
-					</Button>
-				</StyledForm>
+				{social}
+				{form}
 			</Stack>
 		</Box>
 	)
