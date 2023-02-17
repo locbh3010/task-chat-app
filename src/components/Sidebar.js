@@ -72,19 +72,19 @@ const Sidebar = () => {
 				src="https://gamesao.vnncdn.net/Resources/Upload/Images/News/3194b2bb-1255-401b-9076-d0680e7288e5.png"
 				name="Huu Loc"
 				chatPreview="with a background color of #353b48 if it has an"
-			/>
-			<Conversation
-				name="Ayaka Dekhara"
-				chatPreview="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit, praesentium!"
 				isActive
 			/>
 			<Conversation
 				name="Ayaka Dekhara"
-				chatPreview="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit, praesentium!"
+				chatPreview="You: what sub??"
 			/>
 			<Conversation
 				name="Ayaka Dekhara"
-				chatPreview="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit, praesentium!"
+				chatPreview="Send a file"
+			/>
+			<Conversation
+				name="Ayaka Dekhara"
+				chatPreview="what sub bro!!!"
 			/>
 		</Stack>
 	)

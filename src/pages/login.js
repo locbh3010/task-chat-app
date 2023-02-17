@@ -5,7 +5,6 @@ import styled from 'styled-components'
 import * as yup from 'yup'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { useForm } from 'react-hook-form'
-import { useEffect } from 'react'
 import Head from 'next/head'
 
 const StyledForm = styled.form`
@@ -31,9 +30,7 @@ const login = () => {
 		resolver: yupResolver(schema),
 		mode: 'onBlur',
 	})
-	const onSubmit = (value) => {
-		console.log(value)
-	}
+	const onSubmit = (value) => {}
 
 	const social = (
 		<Stack

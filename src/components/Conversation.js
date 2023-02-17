@@ -7,7 +7,7 @@ import Link from 'next/link'
 
 const StyledContainer = styled(Stack)`
 	flex-direction: row;
-	border-radius: 4px;
+	border-radius: 12px;
 	padding: 16px;
 	overflow: hidden;
 	max-width: 100%;
@@ -34,7 +34,7 @@ const Conversation = ({ src, name, chatPreview, isActive }) => {
 		}
 
 		return (
-			<div>
+			<div style={{ marginLeft: 'auto' }}>
 				<IconButton
 					color="info"
 					aria-controls={open ? 'basic-menu' : undefined}

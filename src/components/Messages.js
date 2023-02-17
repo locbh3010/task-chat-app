@@ -1,7 +1,7 @@
 import { AttachFile, SendRounded } from '@mui/icons-material'
 import { Avatar, Divider, IconButton, TextField, Typography } from '@mui/material'
 import { Box, Stack } from '@mui/system'
-import React, { useRef, useState } from 'react'
+import React from 'react'
 import styled from 'styled-components'
 import Message from './Message'
 
@@ -19,11 +19,18 @@ const StyledEnterNewMsg = styled.form`
 	border-top: 1px solid rgba(0, 0, 0, 0.1);
 	gap: 8px;
 `
+const StyledMsgScreen = styled.div`
+	display: flex;
+	flex-direction: column;
+	flex: 1;
+
+	padding: 32px;
+
+	overflow-x: hidden;
+	overflow-y: scroll;
+`
 
 const Messages = () => {
-	const fileRef = useRef(null)
-	const [sendMsg, setSendMsg] = useState('')
-
 	const header = (
 		<Stack
 			direction="row"
@@ -59,7 +66,6 @@ const Messages = () => {
 				multiple
 				style={{ display: 'none' }}
 				id="file"
-				ref={fileRef}
 			/>
 			<IconButton onClick={() => fileRef.current.click()}>
 				<AttachFile
@@ -76,28 +82,36 @@ const Messages = () => {
 		</StyledEnterNewMsg>
 	)
 	const messageScreen = (
-		<Stack sx={{ paddingInline: 4, flex: 1, overflowY: 'scroll', paddingBlock: 4, overflowX: 'hidden' }}>
+		<StyledMsgScreen>
 			<Message
-				content="Lorem ipsum dolor sit amet consectetur rit fuga est voluptas nostrum?"
-				position="right"
-			/>
-			<Message content="Lorem ipsum dolor sit amet consectetur rit fuga est voluptas nostrum?" />
-			<Message content="Lorem ipsum" />
-			<Message
-				content="Lorem ipsum dolor sit amet consectetur rit fuga est voluptas nostrum?"
-				position="right"
+				type="text"
+				content={[
+					'CODE 1: KARU3RG6NY65',
+					'We display any errors for each input field by checking for the existence of the corresponding errors object',
+				]}
 			/>
 			<Message
-				content="Lorem ipsum  nostrum?"
 				position="right"
+				type="text"
+				content={['CODE 1: KARU3RG6NY65', 'We display any errors for each input field by']}
 			/>
-			<Message content="Lorem ipsum dolor sit amet consectetur rit fuga est voluptas nostrum?" />
-			<Message content="Lorem ipsum" />
 			<Message
-				content="Lorem ips con amet consectetur rit fuga es voluptas nostrum?"
-				position="right"
+				position="left"
+				type="image"
+				content={[
+					'https://cdn.dribbble.com/userupload/4738479/file/original-f7d626f633a9f0a3aa15200d72c48b0a.png?compress=1&resize=1024x768',
+				]}
 			/>
-		</Stack>
+			<Message
+				position="right"
+				type="image"
+				content={[
+					'https://cdn.dribbble.com/userupload/4685782/file/original-d7f210fd667d4a9436d04d15bb2bdcf2.png?compress=1&resize=1024x768',
+					'https://cdn.dribbble.com/userupload/4738479/file/original-f7d626f633a9f0a3aa15200d72c48b0a.png?compress=1&resize=1024x768',
+					'https://cdn.dribbble.com/userupload/4721843/file/original-df6f4c6cd58a6fd5d917c0a2d0a268c5.png?compress=1&resize=1024x768',
+				]}
+			/>
+		</StyledMsgScreen>
 	)
 	return (
 		<Box sx={{ flex: 1, height: '100vh', position: 'relative', display: 'flex', flexDirection: 'column' }}>
