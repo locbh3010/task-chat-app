@@ -2,6 +2,11 @@ import { Facebook, GitHub, Google } from '@mui/icons-material'
 import { Button, Stack, TextField, Typography } from '@mui/material'
 import { Box } from '@mui/system'
 import styled from 'styled-components'
+import * as yup from 'yup'
+import { yupResolver } from '@hookform/resolvers/yup'
+import { useForm } from 'react-hook-form'
+import { useEffect } from 'react'
+import Head from 'next/head'
 
 const StyledForm = styled.form`
 	display: flex;
@@ -12,7 +17,24 @@ const StyledForm = styled.form`
 	margin-top: 24px;
 `
 
+const schema = yup.object().shape({
+	email: yup.string().email('Email is valid').required('Please enter your email address'),
+	password: yup.string().required('Please enter your password'),
+})
+
 const login = () => {
+	const {
+		register,
+		handleSubmit,
+		formState: { errors },
+	} = useForm({
+		resolver: yupResolver(schema),
+		mode: 'onBlur',
+	})
+	const onSubmit = (value) => {
+		console.log(value)
+	}
+
 	const social = (
 		<Stack
 			alignItems="center"
@@ -41,18 +63,24 @@ const login = () => {
 		</Stack>
 	)
 	const form = (
-		<StyledForm>
+		<StyledForm onSubmit={handleSubmit(onSubmit)}>
 			<TextField
 				label="Email"
 				fullWidth
 				autoComplete={false}
 				type="email"
+				{...register('email')}
+				error={errors.email}
+				helperText={errors.email && errors.email.message}
 			/>
 			<TextField
 				label="Password"
 				fullWidth
 				type="password"
 				autoComplete={false}
+				{...register('password')}
+				error={errors.password}
+				helperText={errors.password && errors.password.message}
 			/>
 			<Button
 				type="submit"
@@ -65,22 +93,27 @@ const login = () => {
 		</StyledForm>
 	)
 	return (
-		<Box sx={{ maxWidth: 'sm', marginInline: 'auto' }}>
-			<Stack
-				alignItems="center"
-				justifyContent="center"
-				sx={{ padding: 10 }}>
-				<Typography
-					variant="h4"
-					textAlign="center"
-					gutterBottom>
-					Log in your account
-				</Typography>
+		<>
+			<Head>
+				<title>Chat app - Login</title>
+			</Head>
+			<Box sx={{ maxWidth: 'sm', marginInline: 'auto' }}>
+				<Stack
+					alignItems="center"
+					justifyContent="center"
+					sx={{ padding: 10 }}>
+					<Typography
+						variant="h4"
+						textAlign="center"
+						gutterBottom>
+						Log in your account
+					</Typography>
 
-				{social}
-				{form}
-			</Stack>
-		</Box>
+					{social}
+					{form}
+				</Stack>
+			</Box>
+		</>
 	)
 }
 
