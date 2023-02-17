@@ -1,7 +1,7 @@
 import { AttachFile, SendRounded } from '@mui/icons-material'
 import { Avatar, Divider, IconButton, TextField, Typography } from '@mui/material'
 import { Box, Stack } from '@mui/system'
-import React from 'react'
+import React, { useRef, useState } from 'react'
 import styled from 'styled-components'
 import Message from './Message'
 
@@ -21,6 +21,9 @@ const StyledEnterNewMsg = styled.form`
 `
 
 const Messages = () => {
+	const fileRef = useRef(null)
+	const [sendMsg, setSendMsg] = useState('')
+
 	const header = (
 		<Stack
 			direction="row"
@@ -51,13 +54,20 @@ const Messages = () => {
 				placeholder="Enter a message..."
 				sx={{ flexGrow: 1 }}
 			/>
-			<IconButton>
+			<input
+				type="file"
+				multiple
+				style={{ display: 'none' }}
+				id="file"
+				ref={fileRef}
+			/>
+			<IconButton onClick={() => fileRef.current.click()}>
 				<AttachFile
 					fontSize="large"
 					sx={{ rotate: '45deg' }}
 				/>
 			</IconButton>
-			<IconButton>
+			<IconButton type="submit">
 				<SendRounded
 					fontSize="large"
 					sx={{ rotate: '-45deg' }}

@@ -40,7 +40,6 @@ const login = () => {
 			</Button>
 		</Stack>
 	)
-
 	const form = (
 		<StyledForm>
 			<TextField
