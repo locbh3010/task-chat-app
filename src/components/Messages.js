@@ -1,7 +1,7 @@
 import { AttachFile, SendRounded } from '@mui/icons-material'
 import { Avatar, Divider, IconButton, TextField, Typography } from '@mui/material'
 import { Box, Stack } from '@mui/system'
-import React from 'react'
+import React, { useRef } from 'react'
 import styled from 'styled-components'
 import Message from './Message'
 
@@ -31,6 +31,7 @@ const StyledMsgScreen = styled.div`
 `
 
 const Messages = () => {
+	const fileRef = useRef(null)
 	const header = (
 		<Stack
 			direction="row"
@@ -66,6 +67,7 @@ const Messages = () => {
 				multiple
 				style={{ display: 'none' }}
 				id="file"
+				ref={fileRef}
 			/>
 			<IconButton onClick={() => fileRef.current.click()}>
 				<AttachFile
