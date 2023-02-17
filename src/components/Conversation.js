@@ -3,6 +3,7 @@ import { Avatar, Box, IconButton, Menu, MenuItem, Stack, Tooltip, Typography } f
 import React from 'react'
 import styled, { css } from 'styled-components'
 import PropTypes from 'prop-types'
+import Link from 'next/link'
 
 const StyledContainer = styled(Stack)`
 	flex-direction: row;
@@ -61,29 +62,35 @@ const Conversation = ({ src, name, chatPreview, isActive }) => {
 			alignItems="center"
 			spacing={2}
 			isActive={isActive}>
-			<Avatar
-				alt="User"
-				src={src ? src : ''}
-				sx={{
-					width: 50,
-					height: 50,
-					cursor: 'pointer',
-				}}
-			/>
+			<Link href="/id">
+				<Avatar
+					alt="User"
+					src={src ? src : ''}
+					sx={{
+						width: 50,
+						height: 50,
+						cursor: 'pointer',
+					}}
+				/>
+			</Link>
 			<Box sx={{ maxWidth: '60%', overflow: 'hidden' }}>
-				<Typography
-					variant="h6"
-					fontWeight="600"
-					sx={{ color: isActive ? 'white' : 'black', cursor: 'pointer' }}
-					noWrap>
-					{name}
-				</Typography>
-				<Typography
-					variant="caption"
-					sx={{ color: isActive ? 'rgba(255,255,255,0.5)' : 'GrayText', cursor: 'pointer' }}
-					noWrap>
-					{chatPreview}
-				</Typography>
+				<Link href="/id">
+					<Typography
+						variant="h6"
+						fontWeight="600"
+						sx={{ color: isActive ? 'white' : 'black', cursor: 'pointer' }}
+						noWrap>
+						{name}
+					</Typography>
+				</Link>
+				<Link href="/id">
+					<Typography
+						variant="caption"
+						sx={{ color: isActive ? 'rgba(255,255,255,0.5)' : 'GrayText', cursor: 'pointer' }}
+						noWrap>
+						{chatPreview}
+					</Typography>
+				</Link>
 			</Box>
 			<Action />
 		</StyledContainer>

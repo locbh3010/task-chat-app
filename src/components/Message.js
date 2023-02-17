@@ -21,23 +21,23 @@ const StyledSenderMsg = styled(StyledMsg)`
 	color: white;
 `
 
-const Message = ({ text, position }) => {
+const Message = ({ content, position }) => {
 	if (position === 'right')
 		return (
 			<StyledSenderMsg>
-				<Typography variant="body1">{text}</Typography>
+				<Typography variant="body1">{content}</Typography>
 			</StyledSenderMsg>
 		)
 	else
 		return (
 			<StyledMsg>
-				<Typography variant="body1">{text}</Typography>
+				<Typography variant="body1">{content}</Typography>
 			</StyledMsg>
 		)
 }
 
 Message.propTypes = {
-	text: PropTypes.string.isRequired,
+	content: PropTypes.string.isRequired,
 	position: PropTypes.string,
 }
 

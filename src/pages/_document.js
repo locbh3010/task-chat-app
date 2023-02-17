@@ -8,7 +8,6 @@ export default function Document() {
 					name="description"
 					content="make by huu loc"
 				/>
-				<title>Chat App - Task Huu Loc</title>
 			</Head>
 			<body>
 				<Main />

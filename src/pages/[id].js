@@ -1,18 +1,19 @@
 import Layout from '@/components/Layout'
+import Messages from '@/components/Messages'
 import Head from 'next/head'
 import React from 'react'
 
-const Home = () => {
+const MessagePage = () => {
 	return (
 		<div>
 			<Head>
-				<title>Home Page</title>
+				<title>Chat - id</title>
 			</Head>
 			<Layout>
-				<h1>home page</h1>
+				<Messages />
 			</Layout>
 		</div>
 	)
 }
 
-export default Home
+export default MessagePage

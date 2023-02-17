@@ -5,7 +5,7 @@ import React from 'react'
 import styled from 'styled-components'
 import Message from './Message'
 
-const StyledEnterNewMsg = styled.div`
+const StyledEnterNewMsg = styled.form`
 	display: flex;
 	align-items: center;
 	padding: 0px 32px 30px;
@@ -68,37 +68,23 @@ const Messages = () => {
 	const messageScreen = (
 		<Stack sx={{ paddingInline: 4, flex: 1, overflowY: 'scroll', paddingBlock: 4, overflowX: 'hidden' }}>
 			<Message
-				text="Lorem ipsum dolor sit amet consectetur rit fuga est voluptas nostrum?"
+				content="Lorem ipsum dolor sit amet consectetur rit fuga est voluptas nostrum?"
 				position="right"
 			/>
-			<Message text="Lorem ipsum dolor sit amet consectetur rit fuga est voluptas nostrum?" />
-			<Message text="Lorem ipsum" />
+			<Message content="Lorem ipsum dolor sit amet consectetur rit fuga est voluptas nostrum?" />
+			<Message content="Lorem ipsum" />
 			<Message
-				text="Lorem ipsum dolor sit amet consectetur rit fuga est voluptas nostrum?"
-				position="right"
-			/>
-			<Message
-				text="Lorem ipsum  nostrum?"
+				content="Lorem ipsum dolor sit amet consectetur rit fuga est voluptas nostrum?"
 				position="right"
 			/>
 			<Message
-				text="Lorem ipsumetur rit fuga est Lorem ipsum dolor sit amet consectetur rit fuga es Lorem ipsum dolor sit amet consectetur rit fuga es voluptas nostrum?"
+				content="Lorem ipsum  nostrum?"
 				position="right"
 			/>
+			<Message content="Lorem ipsum dolor sit amet consectetur rit fuga est voluptas nostrum?" />
+			<Message content="Lorem ipsum" />
 			<Message
-				text="Lorem ipsum dolor sit amet consectetur rit fuga est voluptas nostrum?"
-				position="right"
-			/>
-			<Message text="Lorem ipsum dolor sit amet consectetur rit fuga est voluptas nostrum?" />
-			<Message text="Lorem ipsum" />
-			<Message
-				text="Lorem ips con amet consectetur rit fuga es voluptas nostrum?"
-				position="right"
-			/>
-			<Message text="Lorem ipsum dolor sit amet consectetur rit fuga est voluptas nostrum?" />
-			<Message text="Lorem ipsum" />
-			<Message
-				text="Lorem ips con amet consectetur rit fuga es voluptas nostrum?"
+				content="Lorem ips con amet consectetur rit fuga es voluptas nostrum?"
 				position="right"
 			/>
 		</Stack>

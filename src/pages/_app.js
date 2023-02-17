@@ -6,12 +6,16 @@ const GlobalStyle = createGlobalStyle`
 		margin: 0;	
 		box-sizing: border-box
 	}
+	a {
+		text-decoration: none
+	}
 `
 
 export default function App({ Component, pageProps }) {
 	return (
 		<>
 			<GlobalStyle />
+
 			<Component {...pageProps} />
 		</>
 	)
