@@ -1,7 +1,8 @@
-import { Typography } from '@mui/material'
+import { IconButton, Typography } from '@mui/material'
 import React from 'react'
 import styled, { css } from 'styled-components'
 import PropTypes from 'prop-types'
+import { TextSnippet } from '@mui/icons-material'
 
 const StyledMsg = styled.div`
 	width: fit-content;
@@ -40,7 +41,7 @@ const StyledMsg = styled.div`
 					border-bottom-right-radius: 30px;
 					border-top-left-radius: ${({ order }) => (order === 'first' && '30px') || (order === 'both' && '30px')};
 					border-bottom-left-radius: ${({ order }) => (order === 'last' && '30px') || (order === 'both' && '30px')};
-			  `}
+			  `};
 
 	${({ type, multiple, column }) =>
 		type === 'image' && multiple
@@ -57,9 +58,33 @@ const StyledMsg = styled.div`
 			  `
 			: css`
 					max-width: 40%;
-			  `}
+			  `};
+
+	${({ type }) =>
+		type === 'file' &&
+		css`
+			min-width: 10%;
+
+			padding: 4px 24px;
+
+			display: flex;
+			align-items: center;
+			gap: 8px;
+
+			background-color: #ecf0f1;
+			color: black;
+
+			.file-name {
+				font-weight: 700;
+			}
+			.file-capacity {
+				font-style: italic;
+			}
+		`}
 `
 
+// * Ví dụ: gửi 3 tin nhắn thì tìm xem tin nhắn hiện tại ở vị trí đầu hay là vị trí cuối
+// * Để style border radius
 const findOrder = (length, index) => {
 	let order
 	if (length === 1) order = 'both'
@@ -77,7 +102,8 @@ const Message = ({ content, position, type }) => {
 			<StyledMsg
 				order={findOrder(content.length, index)}
 				type={type}
-				position={position}>
+				position={position}
+				key={msg}>
 				<Typography
 					variant="body2"
 					key={msg}>
@@ -97,6 +123,7 @@ const Message = ({ content, position, type }) => {
 					src={src}
 					className="img-cover"
 					alt=""
+					key={src}
 				/>
 			))}
 		</StyledMsg>
@@ -113,12 +140,39 @@ const Message = ({ content, position, type }) => {
 			/>
 		</StyledMsg>
 	)
+	const fileContent =
+		type === 'file' &&
+		content.length > 0 &&
+		content.map((file, index) => (
+			<StyledMsg
+				key={file.name}
+				order={findOrder(content.length, index)}
+				type={type}
+				position={position}>
+				<IconButton color="primary">
+					<TextSnippet />
+				</IconButton>
+				<div>
+					<Typography
+						variant="subtitle2"
+						className="file-name">
+						{file.name}
+					</Typography>
+					<Typography
+						variant="caption"
+						className="file-capacity">
+						{file.capacity}
+					</Typography>
+				</div>
+			</StyledMsg>
+		))
 
 	return (
 		<>
 			{textContent}
 			{multipleImageContent}
 			{singleImageContent}
+			{fileContent}
 		</>
 	)
 }

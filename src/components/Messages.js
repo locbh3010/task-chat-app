@@ -84,6 +84,25 @@ const Messages = () => {
 	const messageScreen = (
 		<StyledMsgScreen>
 			<Message
+				type="file"
+				content={[
+					{
+						name: 'DemoFile.zip',
+						capacity: '3.5MB',
+					},
+				]}
+			/>
+			<Message
+				position="right"
+				type="file"
+				content={[
+					{
+						name: 'DemoFile.zip',
+						capacity: '3.5MB',
+					},
+				]}
+			/>
+			<Message
 				type="text"
 				content={[
 					'CODE 1: KARU3RG6NY65',
