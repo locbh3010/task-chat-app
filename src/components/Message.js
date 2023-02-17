@@ -7,6 +7,7 @@ const StyledMsg = styled.div`
 	width: fit-content;
 	max-width: 60%;
 	min-width: 5%;
+
 	word-break: break-all;
 
 	padding: ${({ type }) => (type === 'text' ? '20px 30px' : '0px')};
@@ -41,11 +42,11 @@ const StyledMsg = styled.div`
 					border-bottom-left-radius: ${({ order }) => (order === 'last' && '30px') || (order === 'both' && '30px')};
 			  `}
 
-	${({ type, multiple }) =>
+	${({ type, multiple, column }) =>
 		type === 'image' && multiple
 			? css`
 					display: grid;
-					grid-template-columns: repeat(2, 1fr);
+					grid-template-columns: ${column ? 'repeat(2, 1fr)' : 'repeat(3, 1fr)'};
 					gap: 4px;
 
 					max-width: 60%;
@@ -69,49 +70,55 @@ const findOrder = (length, index) => {
 }
 
 const Message = ({ content, position, type }) => {
+	const textContent =
+		type === 'text' &&
+		content.length > 0 &&
+		content.map((msg, index) => (
+			<StyledMsg
+				order={findOrder(content.length, index)}
+				type={type}
+				position={position}>
+				<Typography
+					variant="body2"
+					key={msg}>
+					{msg}
+				</Typography>
+			</StyledMsg>
+		))
+	const multipleImageContent = type === 'image' && content.length > 1 && (
+		<StyledMsg
+			order="both"
+			position={position}
+			type={type}
+			column={content.length % 2 === 0}
+			multiple>
+			{content.map((src) => (
+				<img
+					src={src}
+					className="img-cover"
+					alt=""
+				/>
+			))}
+		</StyledMsg>
+	)
+	const singleImageContent = type === 'image' && content.length === 1 && (
+		<StyledMsg
+			order="both"
+			position={position}
+			type={type}>
+			<img
+				src={content[0]}
+				className="img-cover"
+				alt=""
+			/>
+		</StyledMsg>
+	)
+
 	return (
 		<>
-			{type === 'text' &&
-				content.length > 0 &&
-				content.map((msg, index) => (
-					<StyledMsg
-						order={findOrder(content.length, index)}
-						type={type}
-						position={position}>
-						<Typography
-							variant="body2"
-							key={msg}>
-							{msg}
-						</Typography>
-					</StyledMsg>
-				))}
-			{type === 'image' && content.length > 1 && (
-				<StyledMsg
-					order="both"
-					position={position}
-					type={type}
-					multiple>
-					{content.map((src) => (
-						<img
-							src={src}
-							className="img-cover"
-							alt=""
-						/>
-					))}
-				</StyledMsg>
-			)}
-			{type === 'image' && content.length === 1 && (
-				<StyledMsg
-					order="both"
-					position={position}
-					type={type}>
-					<img
-						src={content[0]}
-						className="img-cover"
-						alt=""
-					/>
-				</StyledMsg>
-			)}
+			{textContent}
+			{multipleImageContent}
+			{singleImageContent}
 		</>
 	)
 }

@@ -1,9 +1,10 @@
 import { MoreVert } from '@mui/icons-material'
 import { Avatar, Box, IconButton, Menu, MenuItem, Stack, Tooltip, Typography } from '@mui/material'
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import styled, { css } from 'styled-components'
 import PropTypes from 'prop-types'
 import Link from 'next/link'
+import { useRouter } from 'next/router'
 
 const StyledContainer = styled(Stack)`
 	flex-direction: row;
@@ -12,8 +13,8 @@ const StyledContainer = styled(Stack)`
 	overflow: hidden;
 	max-width: 100%;
 	transition: all 0.15s linear;
-	${(props) =>
-		props.isActive
+	${({ isActive }) =>
+		isActive
 			? css`
 					background-color: #2c3a47;
 			  `
@@ -22,10 +23,14 @@ const StyledContainer = styled(Stack)`
 	}`}
 `
 
-const Conversation = ({ src, name, chatPreview, isActive }) => {
+const Conversation = ({ avatar, name, chatPreview, id }) => {
+	const [isActive, setIsActive] = useState(false)
+	const router = useRouter()
+
 	const Action = () => {
 		const [anchorEl, setAnchorEl] = React.useState(null)
 		const open = Boolean(anchorEl)
+
 		const handleClick = (event) => {
 			setAnchorEl(event.currentTarget)
 		}
@@ -56,16 +61,20 @@ const Conversation = ({ src, name, chatPreview, isActive }) => {
 		)
 	}
 
+	useEffect(() => {
+		router.query.id === id ? setIsActive(true) : setIsActive(false)
+	}, [router])
+
 	return (
 		<StyledContainer
 			direction="row"
 			alignItems="center"
 			spacing={2}
 			isActive={isActive}>
-			<Link href="/id">
+			<Link href={`/${id}`}>
 				<Avatar
 					alt="User"
-					src={src ? src : ''}
+					src={avatar ? avatar : ''}
 					sx={{
 						width: 50,
 						height: 50,
@@ -74,7 +83,7 @@ const Conversation = ({ src, name, chatPreview, isActive }) => {
 				/>
 			</Link>
 			<Box sx={{ maxWidth: '60%', overflow: 'hidden' }}>
-				<Link href="/id">
+				<Link href={`/${id}`}>
 					<Typography
 						variant="h6"
 						fontWeight="600"
@@ -83,7 +92,7 @@ const Conversation = ({ src, name, chatPreview, isActive }) => {
 						{name}
 					</Typography>
 				</Link>
-				<Link href="/id">
+				<Link href={`/${id}`}>
 					<Typography
 						variant="caption"
 						sx={{ color: isActive ? 'rgba(255,255,255,0.5)' : 'GrayText', cursor: 'pointer' }}
@@ -97,15 +106,10 @@ const Conversation = ({ src, name, chatPreview, isActive }) => {
 	)
 }
 
-Conversation.defaultProps = {
-	isActive: false,
-}
-
 Conversation.propTypes = {
-	src: PropTypes.string,
+	avatar: PropTypes.string,
 	name: PropTypes.string.isRequired,
 	chatPreview: PropTypes.string.isRequired,
-	isActive: PropTypes.bool,
 }
 
 export default Conversation

@@ -69,22 +69,25 @@ const Sidebar = () => {
 			spacing={2}
 			marginTop={4}>
 			<Conversation
-				src="https://gamesao.vnncdn.net/Resources/Upload/Images/News/3194b2bb-1255-401b-9076-d0680e7288e5.png"
+				avatar="https://gamesao.vnncdn.net/Resources/Upload/Images/News/3194b2bb-1255-401b-9076-d0680e7288e5.png"
 				name="Huu Loc"
 				chatPreview="with a background color of #353b48 if it has an"
-				isActive
+				id="4"
 			/>
 			<Conversation
 				name="Ayaka Dekhara"
 				chatPreview="You: what sub??"
+				id="1"
 			/>
 			<Conversation
 				name="Ayaka Dekhara"
 				chatPreview="Send a file"
+				id="2"
 			/>
 			<Conversation
 				name="Ayaka Dekhara"
 				chatPreview="what sub bro!!!"
+				id="3"
 			/>
 		</Stack>
 	)
