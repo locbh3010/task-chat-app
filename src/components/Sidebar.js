@@ -92,6 +92,11 @@ const Sidebar = () => {
 				chatPreview="what sub bro!!!"
 				id="3"
 			/>
+			<Conversation
+				name="Ayaka Dekhara"
+				chatPreview="Typing..."
+				id="5o8u"
+			/>
 		</Stack>
 	)
 	return (

@@ -34,7 +34,7 @@ const StyledMsg = styled.div`
 					border-bottom-right-radius: ${({ order }) => (order === 'last' && '30px') || (order === 'both' && '30px')};
 			  `
 			: css`
-					background-color: ${type === 'image' ? 'transparent' : ' #ecf0f1'};
+					background-color: ${type === 'image' ? 'transparent' : '#ecf0f1'};
 					color: black;
 
 					border-top-right-radius: 30px;

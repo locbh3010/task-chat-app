@@ -3,6 +3,7 @@ import { Avatar, Divider, IconButton, TextField, Typography } from '@mui/materia
 import { Box, Stack } from '@mui/system'
 import React, { useRef } from 'react'
 import styled from 'styled-components'
+import ChatPending from './ChatPending'
 import Message from './Message'
 
 const StyledEnterNewMsg = styled.form`
@@ -132,6 +133,7 @@ const Messages = () => {
 					'https://cdn.dribbble.com/userupload/4721843/file/original-df6f4c6cd58a6fd5d917c0a2d0a268c5.png?compress=1&resize=1024x768',
 				]}
 			/>
+			<ChatPending />
 		</StyledMsgScreen>
 	)
 	return (
