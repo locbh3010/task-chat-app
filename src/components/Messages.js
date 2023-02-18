@@ -62,6 +62,7 @@ const Messages = () => {
 			<TextField
 				placeholder="Enter a message..."
 				sx={{ flexGrow: 1 }}
+				autoComplete={false}
 			/>
 			<input
 				type="file"
@@ -76,11 +77,10 @@ const Messages = () => {
 					sx={{ rotate: '45deg' }}
 				/>
 			</IconButton>
-			<IconButton type="submit">
-				<SendRounded
-					fontSize="large"
-					sx={{ rotate: '-45deg' }}
-				/>
+			<IconButton
+				type="submit"
+				sx={{ color: 'white', bgColor: 'primary' }}>
+				<SendRounded fontSize="large" />
 			</IconButton>
 		</StyledEnterNewMsg>
 	)
