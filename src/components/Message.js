@@ -43,22 +43,15 @@ const StyledMsg = styled.div`
 					border-bottom-left-radius: ${({ order }) => (order === 'last' && '30px') || (order === 'both' && '30px')};
 			  `};
 
-	${({ type, multiple, column }) =>
-		type === 'image' && multiple
-			? css`
-					display: grid;
-					grid-template-columns: ${column ? 'repeat(2, 1fr)' : 'repeat(3, 1fr)'};
-					gap: 4px;
+	${({ type }) =>
+		type === 'image' &&
+		css`
+			max-width: 40%;
 
-					max-width: 60%;
-
-					img {
-						flex-shrink: 0;
-					}
-			  `
-			: css`
-					max-width: 40%;
-			  `};
+			img {
+				flex-shrink: 0;
+			}
+		`};
 
 	${({ type }) =>
 		type === 'file' &&
@@ -111,35 +104,21 @@ const Message = ({ content, position, type }) => {
 				</Typography>
 			</StyledMsg>
 		))
-	const multipleImageContent = type === 'image' && content.length > 1 && (
-		<StyledMsg
-			order="both"
-			position={position}
-			type={type}
-			column={content.length % 2 === 0}
-			multiple>
-			{content.map((src) => (
+	const multipleImageContent =
+		type === 'image' &&
+		content.length > 0 &&
+		content.map((img, index) => (
+			<StyledMsg
+				order={findOrder(content.length, index)}
+				position={position}
+				type={type}>
 				<img
-					src={src}
+					src={img}
 					className="img-cover"
 					alt=""
-					key={src}
 				/>
-			))}
-		</StyledMsg>
-	)
-	const singleImageContent = type === 'image' && content.length === 1 && (
-		<StyledMsg
-			order="both"
-			position={position}
-			type={type}>
-			<img
-				src={content[0]}
-				className="img-cover"
-				alt=""
-			/>
-		</StyledMsg>
-	)
+			</StyledMsg>
+		))
 	const fileContent =
 		type === 'file' &&
 		content.length > 0 &&
@@ -171,7 +150,6 @@ const Message = ({ content, position, type }) => {
 		<>
 			{textContent}
 			{multipleImageContent}
-			{singleImageContent}
 			{fileContent}
 		</>
 	)

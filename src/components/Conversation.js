@@ -66,12 +66,12 @@ const Conversation = ({ avatar, name, chatPreview, id }) => {
 	}, [router])
 
 	return (
-		<StyledContainer
-			direction="row"
-			alignItems="center"
-			spacing={2}
-			isActive={isActive}>
-			<Link href={`/${id}`}>
+		<Link href={`/${id}`}>
+			<StyledContainer
+				direction="row"
+				alignItems="center"
+				spacing={2}
+				isActive={isActive}>
 				<Avatar
 					alt="User"
 					src={avatar ? avatar : ''}
@@ -81,9 +81,7 @@ const Conversation = ({ avatar, name, chatPreview, id }) => {
 						cursor: 'pointer',
 					}}
 				/>
-			</Link>
-			<Box sx={{ maxWidth: '60%', overflow: 'hidden' }}>
-				<Link href={`/${id}`}>
+				<Box sx={{ maxWidth: '60%', overflow: 'hidden' }}>
 					<Typography
 						variant="h6"
 						fontWeight="600"
@@ -91,18 +89,16 @@ const Conversation = ({ avatar, name, chatPreview, id }) => {
 						noWrap>
 						{name}
 					</Typography>
-				</Link>
-				<Link href={`/${id}`}>
 					<Typography
 						variant="caption"
 						sx={{ color: isActive ? 'rgba(255,255,255,0.5)' : 'GrayText', cursor: 'pointer' }}
 						noWrap>
 						{chatPreview}
 					</Typography>
-				</Link>
-			</Box>
-			<Action />
-		</StyledContainer>
+				</Box>
+				<Action />
+			</StyledContainer>
+		</Link>
 	)
 }
 
