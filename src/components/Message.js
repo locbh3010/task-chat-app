@@ -1,9 +1,10 @@
-import { IconButton, Tooltip, Typography } from '@mui/material'
+import { IconButton, Typography } from '@mui/material'
 import React, { useState } from 'react'
 import styled, { css } from 'styled-components'
 import PropTypes from 'prop-types'
 import { TextSnippet } from '@mui/icons-material'
 import LightBox from './LightBox'
+import { Tooltip } from '@mui/joy'
 
 const StyledMsg = styled.div`
 	width: fit-content;
@@ -102,15 +103,17 @@ const Message = ({ content, position, type, time }) => {
 			<Tooltip
 				title={time[index]}
 				placement={position === 'right' ? 'left' : 'right'}
-				arrow
-				key={msg}>
+				key={msg}
+				color="neutral"
+				size="lg">
 				<StyledMsg
 					order={findOrder(content.length, index)}
 					type={type}
 					position={position}>
 					<Typography
 						variant="body2"
-						key={msg}>
+						key={msg}
+						sx={{ color: position === 'right' ? 'white' : 'black' }}>
 						{msg}
 					</Typography>
 				</StyledMsg>

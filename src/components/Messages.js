@@ -1,4 +1,5 @@
 import { AttachFile, SendRounded } from '@mui/icons-material'
+import { ListDivider } from '@mui/joy'
 import { Avatar, Divider, IconButton, TextField, Typography } from '@mui/material'
 import { Box, Stack } from '@mui/system'
 import React, { useRef } from 'react'
@@ -121,6 +122,9 @@ const Messages = () => {
 				content={['CODE 1: KARU3RG6NY65', 'We display any errors for each input field by']}
 				time={['Th6 12thg 2, 23, 18:40', 'Th6 12thg 2, 23, 18:20']}
 			/>
+			<ListDivider sx={{ marginBlock: 4, color: 'GrayText' }}>
+				<Typography>Th7 13thg 2</Typography>
+			</ListDivider>
 			<Message
 				position="left"
 				type="image"
