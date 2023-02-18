@@ -1,8 +1,9 @@
 import { IconButton, Typography } from '@mui/material'
-import React from 'react'
+import React, { useState } from 'react'
 import styled, { css } from 'styled-components'
 import PropTypes from 'prop-types'
 import { TextSnippet } from '@mui/icons-material'
+import LightBox from './LightBox'
 
 const StyledMsg = styled.div`
 	width: fit-content;
@@ -44,36 +45,34 @@ const StyledMsg = styled.div`
 			  `};
 
 	${({ type }) =>
-		type === 'image' &&
-		css`
-			max-width: 40%;
+		type === 'image'
+			? css`
+					max-width: 40%;
 
-			img {
-				flex-shrink: 0;
-			}
-		`};
+					img {
+						flex-shrink: 0;
+					}
+			  `
+			: type === 'file' &&
+			  css`
+					min-width: 10%;
 
-	${({ type }) =>
-		type === 'file' &&
-		css`
-			min-width: 10%;
+					padding: 4px 24px;
 
-			padding: 4px 24px;
+					display: flex;
+					align-items: center;
+					gap: 8px;
 
-			display: flex;
-			align-items: center;
-			gap: 8px;
+					background-color: var(--bg-message-recipient);
+					color: black;
 
-			background-color: var(--bg-message-recipient);
-			color: black;
-
-			.file-name {
-				font-weight: 700;
-			}
-			.file-capacity {
-				font-style: italic;
-			}
-		`}
+					.file-name {
+						font-weight: 700;
+					}
+					.file-capacity {
+						font-style: italic;
+					}
+			  `};
 `
 
 // * Ví dụ: gửi 3 tin nhắn thì tìm xem tin nhắn hiện tại ở vị trí đầu hay là vị trí cuối
@@ -88,8 +87,17 @@ const findOrder = (length, index) => {
 }
 
 const Message = ({ content, position, type }) => {
+	const [openLightBox, setOpenLightBox] = useState(false)
+	const [imageLightBox, setImageLightBox] = useState(null)
+
+	const handleOpen = (image) => {
+		setOpenLightBox(true)
+		setImageLightBox(image)
+		console.log(image)
+	}
+	const handleClose = () => setOpenLightBox(false)
+
 	const textContent =
-		type === 'text' &&
 		content.length > 0 &&
 		content.map((msg, index) => (
 			<StyledMsg
@@ -105,13 +113,15 @@ const Message = ({ content, position, type }) => {
 			</StyledMsg>
 		))
 	const multipleImageContent =
-		type === 'image' &&
 		content.length > 0 &&
 		content.map((img, index) => (
 			<StyledMsg
 				order={findOrder(content.length, index)}
 				position={position}
-				type={type}>
+				type={type}
+				onClick={() => {
+					handleOpen(img)
+				}}>
 				<img
 					src={img}
 					className="img-cover"
@@ -120,7 +130,6 @@ const Message = ({ content, position, type }) => {
 			</StyledMsg>
 		))
 	const fileContent =
-		type === 'file' &&
 		content.length > 0 &&
 		content.map((file, index) => (
 			<StyledMsg
@@ -146,7 +155,16 @@ const Message = ({ content, position, type }) => {
 			</StyledMsg>
 		))
 
-	return <>{type === 'text' ? textContent : type === 'image' ? multipleImageContent : fileContent}</>
+	return (
+		<>
+			<LightBox
+				open={openLightBox}
+				handleClose={handleClose}
+				image={imageLightBox}
+			/>
+			{type === 'text' ? textContent : type === 'image' ? multipleImageContent : fileContent}
+		</>
+	)
 }
 
 Message.propTypes = {
