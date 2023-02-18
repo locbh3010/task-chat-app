@@ -146,13 +146,7 @@ const Message = ({ content, position, type }) => {
 			</StyledMsg>
 		))
 
-	return (
-		<>
-			{textContent}
-			{multipleImageContent}
-			{fileContent}
-		</>
-	)
+	return <>{type === 'text' ? textContent : type === 'image' ? multipleImageContent : fileContent}</>
 }
 
 Message.propTypes = {

@@ -1,4 +1,4 @@
-import { Chat, Email } from '@mui/icons-material'
+import { Chat } from '@mui/icons-material'
 import { Button, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, IconButton, TextField, Tooltip } from '@mui/material'
 import { Stack } from '@mui/system'
 import React, { useState } from 'react'
