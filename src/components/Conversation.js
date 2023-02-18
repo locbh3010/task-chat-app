@@ -39,7 +39,9 @@ const Conversation = ({ avatar, name, chatPreview, id }) => {
 		}
 
 		return (
-			<div style={{ marginLeft: 'auto' }}>
+			<div
+				style={{ marginLeft: 'auto' }}
+				onClick={(e) => e.preventDefault()}>
 				<IconButton
 					color="info"
 					aria-controls={open ? 'basic-menu' : undefined}
