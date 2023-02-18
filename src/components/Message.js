@@ -1,4 +1,4 @@
-import { IconButton, Typography } from '@mui/material'
+import { IconButton, Tooltip, Typography } from '@mui/material'
 import React, { useState } from 'react'
 import styled, { css } from 'styled-components'
 import PropTypes from 'prop-types'
@@ -85,8 +85,7 @@ const findOrder = (length, index) => {
 
 	return order
 }
-
-const Message = ({ content, position, type }) => {
+const Message = ({ content, position, type, time }) => {
 	const [openLightBox, setOpenLightBox] = useState(false)
 	const [imageLightBox, setImageLightBox] = useState(null)
 
@@ -100,59 +99,73 @@ const Message = ({ content, position, type }) => {
 	const textContent =
 		content.length > 0 &&
 		content.map((msg, index) => (
-			<StyledMsg
-				order={findOrder(content.length, index)}
-				type={type}
-				position={position}
+			<Tooltip
+				title={time[index]}
+				placement={position === 'right' ? 'left' : 'right'}
+				arrow
 				key={msg}>
-				<Typography
-					variant="body2"
-					key={msg}>
-					{msg}
-				</Typography>
-			</StyledMsg>
+				<StyledMsg
+					order={findOrder(content.length, index)}
+					type={type}
+					position={position}>
+					<Typography
+						variant="body2"
+						key={msg}>
+						{msg}
+					</Typography>
+				</StyledMsg>
+			</Tooltip>
 		))
 	const multipleImageContent =
 		content.length > 0 &&
 		content.map((img, index) => (
-			<StyledMsg
-				order={findOrder(content.length, index)}
-				position={position}
-				type={type}
-				onClick={() => {
-					handleOpen(img)
-				}}>
-				<img
-					src={img}
-					className="img-cover"
-					alt=""
-				/>
-			</StyledMsg>
+			<Tooltip
+				title={time[index]}
+				placement={position === 'right' ? 'left' : 'right'}
+				key={img}>
+				<StyledMsg
+					order={findOrder(content.length, index)}
+					position={position}
+					type={type}
+					onClick={() => {
+						handleOpen(img)
+					}}>
+					<img
+						src={img}
+						className="img-cover"
+						alt=""
+					/>
+				</StyledMsg>
+			</Tooltip>
 		))
 	const fileContent =
 		content.length > 0 &&
 		content.map((file, index) => (
-			<StyledMsg
-				key={file.name}
-				order={findOrder(content.length, index)}
-				type={type}
-				position={position}>
-				<IconButton color="primary">
-					<TextSnippet />
-				</IconButton>
-				<div>
-					<Typography
-						variant="subtitle2"
-						className="file-name">
-						{file.name}
-					</Typography>
-					<Typography
-						variant="caption"
-						className="file-capacity">
-						{file.capacity}
-					</Typography>
-				</div>
-			</StyledMsg>
+			<Tooltip
+				title={time[index]}
+				placement={position === 'right' ? 'left' : 'right'}
+				key={file.name}>
+				<StyledMsg
+					order={findOrder(content.length, index)}
+					type={type}
+					position={position}>
+					<IconButton color="primary">
+						<TextSnippet />
+					</IconButton>
+					<div>
+						<Typography
+							variant="subtitle2"
+							className="file-name">
+							{file.name}
+						</Typography>
+						<Typography
+							variant="caption"
+							className="file-capacity">
+							{file.capacity}
+						</Typography>
+					</div>
+				</StyledMsg>
+			</Tooltip>
 		))
 
 	return (
@@ -171,6 +184,7 @@ Message.propTypes = {
 	content: PropTypes.array.isRequired,
 	position: PropTypes.oneOf(['right', 'left']),
 	type: PropTypes.oneOf(['text', 'file', 'image']),
+	time: PropTypes.string.isRequired,
 }
 
 Message.defaultProps = {

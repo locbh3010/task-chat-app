@@ -1,13 +1,14 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
-import { Box, Modal, Typography } from '@mui/material'
+import { Box, Modal } from '@mui/material'
 
 const StyledBox = styled(Box)`
 	background-color: white;
 	width: 90%;
 	height: 85%;
 	overflow: hidden;
+	border: none;
 `
 
 const LightBox = ({ image, open, handleClose }) => {

@@ -94,6 +94,7 @@ const Messages = () => {
 						capacity: '3.5MB',
 					},
 				]}
+				time={['Th6 12thg 2, 23, 17:05']}
 			/>
 			<Message
 				position="right"
@@ -104,6 +105,7 @@ const Messages = () => {
 						capacity: '3.5MB',
 					},
 				]}
+				time={['Th6 12thg 2, 23, 17:08']}
 			/>
 			<Message
 				type="text"
@@ -111,11 +113,13 @@ const Messages = () => {
 					'CODE 1: KARU3RG6NY65',
 					'We display any errors for each input field by checking for the existence of the corresponding errors object',
 				]}
+				time={['Th6 12thg 2, 23, 18:35', 'Th6 12thg 2, 23, 18:37']}
 			/>
 			<Message
 				position="right"
 				type="text"
 				content={['CODE 1: KARU3RG6NY65', 'We display any errors for each input field by']}
+				time={['Th6 12thg 2, 23, 18:40', 'Th6 12thg 2, 23, 18:20']}
 			/>
 			<Message
 				position="left"
@@ -123,6 +127,13 @@ const Messages = () => {
 				content={[
 					'https://cdn.dribbble.com/userupload/4738479/file/original-f7d626f633a9f0a3aa15200d72c48b0a.png?compress=1&resize=1024x768',
 				]}
+				time={['Th7 13thg 2, 23, 07:35']}
+			/>
+			<Message
+				position="left"
+				type="text"
+				content={['CODE 1: KARU3RG6NY65']}
+				time={['Th7 13thg 2, 23, 07:40']}
 			/>
 			<Message
 				position="right"
@@ -132,6 +143,7 @@ const Messages = () => {
 					'https://cdn.dribbble.com/userupload/4738479/file/original-f7d626f633a9f0a3aa15200d72c48b0a.png?compress=1&resize=1024x768',
 					'https://cdn.dribbble.com/userupload/4721843/file/original-df6f4c6cd58a6fd5d917c0a2d0a268c5.png?compress=1&resize=1024x768',
 				]}
+				time={['Th7 13thg 2, 23, 07:45', 'Th7 13thg 2, 23, 07:50', 'Th7 13thg 2, 23, 07:60']}
 			/>
 			<ChatPending />
 		</StyledMsgScreen>
