@@ -16,7 +16,7 @@ const StyledContainer = styled(Stack)`
 	${({ isActive }) =>
 		isActive
 			? css`
-					background-color: #2c3a47;
+					background-color: var(--bg-conversation-active);
 			  `
 			: `:hover {
 		background-color: rgba(0, 0, 0, 0.2);

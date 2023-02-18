@@ -25,7 +25,7 @@ const StyledMsg = styled.div`
 			? css`
 					margin-left: auto;
 
-					background-color: ${type === 'image' ? 'transparent' : '#6c5ce7'};
+					background-color: ${type === 'image' ? 'transparent' : 'var(--bg-message-sender)'};
 					color: white;
 
 					border-top-left-radius: 30px;
@@ -34,7 +34,7 @@ const StyledMsg = styled.div`
 					border-bottom-right-radius: ${({ order }) => (order === 'last' && '30px') || (order === 'both' && '30px')};
 			  `
 			: css`
-					background-color: ${type === 'image' ? 'transparent' : '#ecf0f1'};
+					background-color: ${type === 'image' ? 'transparent' : 'var(--bg-message-recipient)'};
 					color: black;
 
 					border-top-right-radius: 30px;
@@ -64,7 +64,7 @@ const StyledMsg = styled.div`
 			align-items: center;
 			gap: 8px;
 
-			background-color: #ecf0f1;
+			background-color: var(--bg-message-recipient);
 			color: black;
 
 			.file-name {
