@@ -13,4 +13,8 @@ export const GlobalClasses = css`
 		left: 50%;
 		transform: translate(-50%, -50%);
 	}
+	.MuiTooltip-sizeLg {
+		font-size: 14px;
+		padding-block: 20px !important;
+	}
 `

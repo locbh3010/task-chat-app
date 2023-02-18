@@ -58,7 +58,7 @@ const StyledMsg = styled.div`
 			  css`
 					min-width: 10%;
 
-					padding: 4px 24px;
+					padding: 8px 28px;
 
 					display: flex;
 					align-items: center;
@@ -75,7 +75,6 @@ const StyledMsg = styled.div`
 					}
 			  `};
 `
-
 // * Ví dụ: gửi 3 tin nhắn thì tìm xem tin nhắn hiện tại ở vị trí đầu hay là vị trí cuối
 // * Để style border radius
 const findOrder = (length, index) => {
@@ -104,7 +103,6 @@ const Message = ({ content, position, type, time }) => {
 				title={time[index]}
 				placement={position === 'right' ? 'left' : 'right'}
 				key={msg}
-				color="neutral"
 				size="lg">
 				<StyledMsg
 					order={findOrder(content.length, index)}
@@ -125,7 +123,8 @@ const Message = ({ content, position, type, time }) => {
 			<Tooltip
 				title={time[index]}
 				placement={position === 'right' ? 'left' : 'right'}
-				key={img}>
+				key={img}
+				size="lg">
 				<StyledMsg
 					order={findOrder(content.length, index)}
 					position={position}
@@ -147,7 +146,8 @@ const Message = ({ content, position, type, time }) => {
 			<Tooltip
 				title={time[index]}
 				placement={position === 'right' ? 'left' : 'right'}
-				key={file.name}>
+				key={file.name}
+				size="lg">
 				<StyledMsg
 					order={findOrder(content.length, index)}
 					type={type}
